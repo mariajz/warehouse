@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"net/http/httputil"
 	"os"
 	"warehouse/config"
 	"warehouse/db"
+	controller "warehouse/controller"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -21,25 +21,30 @@ func main() {
 	appConfig := config.New("./config.env")
 	fmt.Println(appConfig)
 	db.CreateDBConnection()
-	db.InsertIntoDb()
 
+	controller.Handle()
 
-	http.HandleFunc("/rice", func(writer http.ResponseWriter, request *http.Request) {
-		switch request.Method {
-		case "GET":
-			log.WithFields(log.Fields{"method": request.Method}).Debugf("Valid Method %s for post handler", request.Method)
-			writer.WriteHeader(200)
-		case "POST":
-			log.WithFields(log.Fields{"method": request.Method}).Debugf("Valid Method %s for post handler", request.Method)
-			writer.WriteHeader(200)
-		default:
-			log.WithFields(log.Fields{"method": request.Method}).Debugf("Method %s not supported", request.Method)
-
-			writer.WriteHeader(404)
-		}
-
-		result, _ := httputil.DumpRequest(request, true)
-		fmt.Printf("%s", result)
-
-	})
+	port := fmt.Sprintf(":%s", appConfig.ApplicationPort)
+	_ = http.ListenAndServe(port, nil)
 }
+
+// body := &Student{
+//     Name:    "abc",
+//     Address: "xyz",
+// }
+
+// payloadBuf := new(bytes.Buffer)
+// json.NewEncoder(payloadBuf).Encode(body)
+// req, _ := http.NewRequest("POST", url, payloadBuf)
+
+// client := &http.Client{}
+// res, e := client.Do(req)
+// if e != nil {
+//     return e
+// }
+
+// defer res.Body.Close()
+
+// fmt.Println("response Status:", res.Status)
+// // Print the body to the stdout
+// io.Copy(os.Stdout, res.Body)

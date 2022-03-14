@@ -13,6 +13,8 @@ type AppConfig struct {
 	LogLevel string `mapstructure:"LOG_LEVEL"`
 
 	DBConfig `mapstructure:",squash"`
+
+	ApplicationPort string  `mapstructure:"APPLICATION_PORT"`
 }
 
 func LoadConfig() *AppConfig {

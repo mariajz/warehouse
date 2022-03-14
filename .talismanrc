@@ -1,6 +1,6 @@
 fileignoreconfig:
   - filename: config.env
-    checksum: e9e8177fb51796cb23ae70815bb18692b1d6514e0efa22d98b859c3d2ae04ccb
+    checksum: 64ee96618aaa4b1e366eba8aa403626f7fa6be03908f9389d9b7074e734eff20
   - filename: go.sum
     checksum: 42c11e2a39bc2d6e13fb145dbc290d2a1a05fadbb9cdfbd88c1aeb371f2c2594
   - filename: config/dbConfig.go
@@ -13,5 +13,7 @@ fileignoreconfig:
     checksum: c8cecc1d463081cce280b4ed7ac6a14599d592dba74d694db818d2a945ed4cd9
   - filename: db/db_insertion.go
     checksum: 434445176859d4fe82b24bca9c8ea297094a7373fca5d71b97783eec9412c4b4
+  - filename: db/db_select.go
+    checksum: 261d02c7ed0d790ad335f18e78bb12e79a55828b6020bc9210aa3ac1ee6cdeb9
   
 version: ""

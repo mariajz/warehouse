@@ -6,6 +6,7 @@ import (
 	"log"
 	"warehouse/config"
 	"warehouse/model"
+	_ "github.com/lib/pq"
 )
 
 func InsertIntoDb() {
@@ -26,7 +27,6 @@ func InsertIntoDb() {
 		return
 	}
 	fmt.Println("Connection successful")
-	fmt.Println(db.Query("select * from warehouses"))
 
 	sqlStatement := `
 	INSERT INTO warehouses (id, item_name, quantity, city)
@@ -35,7 +35,7 @@ func InsertIntoDb() {
 	// id := 0
 
 	res := resource.Resource{
-		Id:       2,
+		Id:       4,
 		ItemName: "rice",
 		Quantity: 10,
 		City:     "Chennai",
