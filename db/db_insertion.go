@@ -2,14 +2,16 @@ package db
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"warehouse/config"
-	"warehouse/model"
+	resource "warehouse/model"
 	_ "github.com/lib/pq"
 )
 
-func InsertIntoDb() {
+func InsertIntoDb(request *http.Request) {
 	appConfig := config.New("./config.env")
 	dbConfig := appConfig.DBConfig
 	connectionStr := fmt.Sprintf("port=%s host=%s user=%s password=%s dbname=%s sslmode=disable",
@@ -32,16 +34,14 @@ func InsertIntoDb() {
 	INSERT INTO warehouses (id, item_name, quantity, city)
 	VALUES ($1, $2, $3, $4)
 	RETURNING id`
-	// id := 0
 
-	res := resource.Resource{
-		Id:       4,
-		ItemName: "rice",
-		Quantity: 10,
-		City:     "Chennai",
+	decoder := json.NewDecoder(request.Body)
+	var res resource.Resource
+	err = decoder.Decode(&res)
+	if err != nil {
+		panic(err)
 	}
-
-	err = db.QueryRow(sqlStatement, res.Id, res.ItemName,res.Quantity,res.City).Scan(&res.Id)
+	err = db.QueryRow(sqlStatement, res.Id, res.ItemName, res.Quantity, res.City).Scan(&res.Id)
 	if err != nil {
 		panic(err)
 	}

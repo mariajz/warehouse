@@ -47,7 +47,7 @@ func Handle() {
 			log.WithFields(log.Fields{"method": request.Method}).Debugf("Valid Method %s for post handler", request.Method)
 			writer.WriteHeader(200)
 		case "POST":
-			db.InsertIntoDb()
+			db.InsertIntoDb(request)
 
 			log.WithFields(log.Fields{"method": request.Method}).Debugf("Valid Method %s for post handler", request.Method)
 			writer.WriteHeader(201)
