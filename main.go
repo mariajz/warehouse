@@ -5,6 +5,9 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"os"
+	"warehouse/config"
+	"warehouse/db"
+
 	log "github.com/sirupsen/logrus"
 )
 
@@ -15,7 +18,11 @@ func init() {
 }
 
 func main() {
+	appConfig := config.New("./config.env")
+	fmt.Println(appConfig)
+	db.CreateDBConnection()
 
+	
 	http.HandleFunc("/rice", func(writer http.ResponseWriter, request *http.Request) {
 		switch request.Method {
 		case "GET":
@@ -32,5 +39,6 @@ func main() {
 
 		result, _ := httputil.DumpRequest(request, true)
 		fmt.Printf("%s", result)
+
 	})
 }

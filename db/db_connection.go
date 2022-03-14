@@ -27,5 +27,17 @@ func CreateDBConnection() {
 		return
 	}
 	fmt.Println("Connection successful")
-	fmt.Println(db.Query("select * from bills"))
+	fmt.Println(db.Query("select * from warehouses"))
+
+	sqlStatement := `
+	INSERT INTO warehouses (id, item_name, quantity, city)
+	VALUES ($1, $2, $3, $4)
+	RETURNING id`
+	id := 0
+	err = db.QueryRow(sqlStatement, 1, "rice", 10, "Mumbai").Scan(&id)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("New record ID is:", id)
 }
+

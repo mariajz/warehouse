@@ -7,4 +7,9 @@ fileignoreconfig:
     checksum: c4005c3930f01e00bf34b0f494276f855a7615a5d993d4de729818f22dd81f63
   - filename: db/db_connection.go
     checksum: b413133847860ac5a78b8dbfa31a131a7fcba116aab2efa1ba60a9fc75f968cd
+  - filename: db/scripts/create_table.sql
+    checksum: 236d507e9640a38b1d5d53d479154f9b9d04c52ee72deba8ba123e7c89b80e86
+  - filename: query.sql
+    checksum: c8cecc1d463081cce280b4ed7ac6a14599d592dba74d694db818d2a945ed4cd9
+  
 version: ""

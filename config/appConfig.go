@@ -8,7 +8,7 @@ import (
 )
 
 type AppConfig struct {
-	ShabbyInternetBaseUrl string `mapstructure:"SHABBY_INTERNET_BASE_URL"`
+	WarehouseUrl string `mapstructure:"WAREHOUSE_BASE_URL"`
 
 	LogLevel string `mapstructure:"LOG_LEVEL"`
 
