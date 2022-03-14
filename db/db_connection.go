@@ -1,11 +1,12 @@
 package db
 
 import (
+	"warehouse/config"
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
-	"gitlab.com/tw-catalyst/dev-exercises/neev-13/pairs/pair-03/billfinder/config"
 	"log"
+
+	_ "github.com/lib/pq"
 )
 
 func CreateDBConnection() {
