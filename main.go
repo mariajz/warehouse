@@ -21,8 +21,9 @@ func main() {
 	appConfig := config.New("./config.env")
 	fmt.Println(appConfig)
 	db.CreateDBConnection()
+	db.InsertIntoDb()
 
-	
+
 	http.HandleFunc("/rice", func(writer http.ResponseWriter, request *http.Request) {
 		switch request.Method {
 		case "GET":
