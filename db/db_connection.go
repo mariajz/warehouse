@@ -1,10 +1,10 @@
 package db
 
 import (
-	"warehouse/config"
 	"database/sql"
 	"fmt"
 	"log"
+	"warehouse/config"
 
 	_ "github.com/lib/pq"
 )
@@ -12,6 +12,7 @@ import (
 func CreateDBConnection() {
 	appConfig := config.New("./config.env")
 	dbConfig := appConfig.DBConfig
+
 	connectionStr := fmt.Sprintf("port=%s host=%s user=%s password=%s dbname=%s sslmode=disable",
 		dbConfig.DbPort, dbConfig.DbHost, dbConfig.DbUser, dbConfig.DbPassword, dbConfig.DbName)
 
@@ -29,4 +30,3 @@ func CreateDBConnection() {
 	fmt.Println("Connection successful")
 	fmt.Println(db.Query("select * from warehouses"))
 }
-

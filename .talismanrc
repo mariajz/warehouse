@@ -1,6 +1,8 @@
 fileignoreconfig:
   - filename: config.env
-    checksum: 64ee96618aaa4b1e366eba8aa403626f7fa6be03908f9389d9b7074e734eff20
+    checksum: 832dc579aa0a551d2b180ff8f47bdddf876f1aacd7d390912817e9b31c5a92d8
+  - filename: docker-compose.yml
+    checksum: 3afc2901954a83bfc49822ece425b4fc275b6496134af9da727ef3456032e127
   - filename: go.sum
     checksum: 42c11e2a39bc2d6e13fb145dbc290d2a1a05fadbb9cdfbd88c1aeb371f2c2594
   - filename: config/dbConfig.go
